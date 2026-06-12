@@ -1,12 +1,19 @@
 package com.moonejon.penumbra.book;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
 
 @Entity
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idSeqGen")
+    @SequenceGenerator(name = "idSeqGen", sequenceName = "book_id_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "owner_id", nullable = false, unique = false)
@@ -42,13 +49,15 @@ public class Book {
     @Column(name = "page_count", nullable = false)
     private Integer pageCount;
 
-    @Column(name = "authors")
+    @JdbcTypeCode(SqlTypes.ARRAY)
+    @Column(name = "authors", columnDefinition = "text[]")
     private String[] authors;
 
     @Column(name = "binding", nullable = false)
     private String binding;
 
-    @Column(name = "subjects")
+    @JdbcTypeCode(SqlTypes.ARRAY)
+    @Column(name = "subjects", columnDefinition = "text[]")
     private String[] subjects;
 
     @Column(name = "date_published", nullable = false)
@@ -56,6 +65,21 @@ public class Book {
 
     @Column(name = "publisher", nullable = false)
     private String publisher;
+
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(name = "visibility")
+    private BookVisibility visibility;
+
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "read_date")
+    private LocalDateTime readDate;
+
+    @Column (name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
+
+
 
     //    protected Book() {};
 
