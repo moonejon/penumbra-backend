@@ -4,11 +4,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BookComponent implements CommandLineRunner {
+public class BookComponent {
 
-    @Override
-    public void run(String... args) throws Exception {
-        
-        int totalBookCount = BookRepository.findAll().size();
-    }
 }
