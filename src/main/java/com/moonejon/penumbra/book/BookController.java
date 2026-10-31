@@ -23,8 +23,8 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public Optional<BookResponse> getBookById(@PathVariable Integer id){
-        return bookService.findById(id);
+    public ResponseEntity<BookResponse> getBookById(@PathVariable Integer id){
+        return ResponseEntity.of(bookService.findById(id));
     }
 }
 
