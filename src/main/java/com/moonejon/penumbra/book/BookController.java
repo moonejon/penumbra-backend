@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/books")
@@ -17,7 +16,7 @@ public class BookController {
 
     public BookController(BookService bookService) { this.bookService = bookService; }
 
-    @GetMapping("/")
+    @GetMapping()
     public List<BookResponse> getBooks(){
         return bookService.listAllBooks();
     }
