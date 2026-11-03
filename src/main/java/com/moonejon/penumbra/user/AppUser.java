@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
 
@@ -15,11 +13,10 @@ import java.time.LocalDateTime;
 public class AppUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idSeqGen")
-    @SequenceGenerator(name = "idSeqGen", sequenceName = "appUser_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appUserIdSeqGen")
+    @SequenceGenerator(name = "appUserIdSeqGen", sequenceName = "app_user_id_seq", allocationSize = 1)
     private Integer id;
 
-    @JdbcTypeCode(SqlTypes.VARCHAR)
     @Column(name = "clerk_id", nullable = false)
     private String clerkId;
 
