@@ -34,4 +34,5 @@ build/
 .vscode/
 /n# database dumps (contain user data)
 penumbra_full.sql
-penumbra_backup.sqlename_prisma_shit.sql
+penumbra_backup.sql
+rename_prisma_shit.sql

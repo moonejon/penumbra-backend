@@ -5,8 +5,6 @@ import java.time.ZoneOffset;
 
 public record AppUserResponse(
         Integer id,
-        String clerkId,
-        String email,
         String name,
         Instant createdAt,
         Instant updatedAt,
@@ -20,8 +18,6 @@ public record AppUserResponse(
     public static AppUserResponse from (AppUser appUser) {
         return new AppUserResponse(
                 appUser.getId(),
-                appUser.getClerkId(),
-                appUser.getEmail(),
                 appUser.getName(),
                 appUser.getCreatedAt().atZone(ZoneOffset.UTC).toInstant(),
                 appUser.getUpdatedAt().atZone(ZoneOffset.UTC).toInstant(),
